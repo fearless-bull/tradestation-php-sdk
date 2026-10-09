@@ -1,0 +1,33 @@
+{
+    "name": "fearless-bull/tradestation-php-sdk",
+    "description": "PHP SDK for TradeStation API",
+    "type": "library",
+    "require": {
+        "php": "^8.3",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^13.1",
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "symfony/var-dumper": "^8.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "FearlessBull\\TradeStation\\Sdk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FearlessBull\\TradeStation\\Sdk\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "rernesto",
+            "email": "rernesto.espinosa@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
