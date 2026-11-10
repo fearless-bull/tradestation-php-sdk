@@ -149,7 +149,10 @@ $tradeStation->getPositions('SIM0000001M');
 $tradeStation->getOrders('SIM0000001M');
 $tradeStation->getOrder('SIM0000001M', '123456789');
 $tradeStation->getHistoricalOrders('SIM0000001M', ['since' => '2026-10-01']);
+$tradeStation->getHistoricalOrder('SIM0000001M', '123456789', ['since' => '2026-10-01']);
 ```
+
+TradeStation requires `since` on both historical order calls, at most 90 days back.
 
 Account and order arguments take a single id or an array of ids.
 

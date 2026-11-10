@@ -210,6 +210,21 @@ class TradeStationTest extends TestCase
         self::assertSame(['pageSize' => 50], $request->query);
     }
 
+    public function testItSendsTheSinceDateForHistoricalOrdersByOrderId(): void
+    {
+        $transport = new FakeTransport(new Response(200, ['Orders' => []]));
+        $tradeStation = new TradeStation([
+            'baseUrl' => 'https://api.example.test',
+            'accessToken' => 'token',
+        ], $transport);
+
+        $tradeStation->getHistoricalOrder('ABC123', ['123456789', '286179863'], ['since' => '2026-10-01']);
+
+        $request = $transport->requests[0];
+        self::assertSame('https://api.example.test/v3/brokerage/accounts/ABC123/historicalorders/123456789,286179863', $request->url);
+        self::assertSame(['since' => '2026-10-01'], $request->query);
+    }
+
     public function testItBuildsOrderExecutionRequests(): void
     {
         $transport = new FakeTransport(new Response(200, ['OrderID' => 'order-id']));

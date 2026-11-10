@@ -175,9 +175,11 @@ class TradeStation
         ]));
     }
 
-    public function getHistoricalOrder(array|string $accounts, array|string $orderIds): array|string|null
+    public function getHistoricalOrder(array|string $accounts, array|string $orderIds, array $options = []): array|string|null
     {
-        return $this->sendRequest('/v3/brokerage/accounts/' . $this->csv($accounts) . '/historicalorders/' . $this->csv($orderIds));
+        return $this->sendRequest('/v3/brokerage/accounts/' . $this->csv($accounts) . '/historicalorders/' . $this->csv($orderIds), $this->compact([
+            'since' => $this->formatDateTime($options['since'] ?? null),
+        ]));
     }
 
     public function getPositions(array|string $accounts, array $options = []): array|string|null
